@@ -7,8 +7,8 @@ This is the README for the Third Challenge of my coding bootcamp. This repositor
 Through this challenge, I was able to learn how to use javascript to add prompts for user input. I learned how to make a script react to user inputs to generate a different outcome basted on the options selected. I also learned a little on how to used the Math.js library, as well as subscripts.
 
 ### Link to Deployed REPO
-[Click me!](https://spikey1289.github.io/Spikeys-Portfolio/)
+[Click me!](https://spikey1289.github.io/Password-Generator/)
 
 
 ### Screenshot of Finished Website
-![Screenshot of Website](./Assets/Images/READMEphoto.png)
+![Screenshot of Website](./Assets/Images/README_SCREANSHOT.png)
