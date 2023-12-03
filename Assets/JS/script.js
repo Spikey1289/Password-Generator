@@ -1,8 +1,10 @@
-// Assignment Code
+// variable to link event listener to the generate options button
 var generateBtn = document.querySelector("#optionsButton");
 
+//object containing all the choices user made
 const passwordOptions = {lengthOp: 0, lowerOp: "", upperOp: "", numericOp: "", specialOp: ""};
 
+//function used to get the length in whole numbers of the password, using an input prompt
 function numChar(){
 
   var x = prompt("please enter number of charachters in password (8-128)", "0");
@@ -20,6 +22,7 @@ function numChar(){
   return x;
 }
 
+//repeatable function that takes a string input and outputs a true or false boolian based on user input of 'y' or 'n'
 function boolOptions (x){
 
   var yesNO = prompt("Please enter y/n for " + x + ".", "y").toLowerCase();
@@ -40,6 +43,7 @@ function boolOptions (x){
   return yesNO
 }
 
+//function that handles the actual prompting of the user, and ensures that not all boolean propmts return as false (at least one true). saves the results to the passwordOptions object.
 function passwordOptionsPrompt(){
   var numCharOption;
   var lowerCase;
@@ -70,6 +74,7 @@ function passwordOptionsPrompt(){
   passwordOptions.specialOp = specChar;
 }
 
+//function that generates the password based on the contents of the passwordOptions object.
 function generatePassword(number = passwordOptions.lengthOp, lower = passwordOptions.lowerOp, upper = passwordOptions.upperOp, numeric = passwordOptions.numericOp, specChar = passwordOptions.specialOp) {
   var lowerChars = "abcdefghijklmnopqrstuvwzyz";
   var upperChars = lowerChars.toUpperCase();
@@ -101,6 +106,7 @@ function generatePassword(number = passwordOptions.lengthOp, lower = passwordOpt
   return password;
 }
 
+//function that triggers the generation of a password when button is clicked, and that displays the password in the textarea
 function writePassword() {
   var password = generatePassword(passwordOptionsPrompt());
   var passwordText = document.querySelector("#password");
