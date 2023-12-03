@@ -1,5 +1,5 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+var generateBtn = document.querySelector("#optionsButton");
 
 const passwordOptions = {lengthOp: 0, lowerOp: "", upperOp: "", numericOp: "", specialOp: ""};
 
@@ -22,7 +22,7 @@ function numChar(){
 
 function boolOptions (x){
 
-  var yesNO = prompt("Please enter y/n for " + x + ".").toLowerCase();
+  var yesNO = prompt("Please enter y/n for " + x + ".", "y").toLowerCase();
   if (yesNO == "y") {
     yesNO = true;
   } else if (yesNO == "n") {
@@ -30,7 +30,7 @@ function boolOptions (x){
   }
 
   while (typeof yesNO !== "boolean" || yesNO == null) {
-    yesNO = prompt("Please enter y/n for " + x + ".").toLowerCase();
+    yesNO = prompt("Please enter y/n for " + x + ".", "y").toLowerCase();
     if (yesNO === "y") {
       yesNO = true;
     } else if (yesNO === "n") {
@@ -103,7 +103,6 @@ function generatePassword(number = passwordOptions.lengthOp, lower = passwordOpt
   return password;
 }
 
-// Write password to the #password input
 function writePassword() {
   var password = generatePassword(passwordOptionsPrompt());
   var passwordText = document.querySelector("#password");
@@ -113,4 +112,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword);
