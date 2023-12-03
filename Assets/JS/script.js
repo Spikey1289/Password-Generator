@@ -20,7 +20,7 @@ function numChar(){
 
 function boolOptions (x){
 
-  var yesNO = prompt("Please enter y/n for " + x + ".").toLocaleLowerCase();
+  var yesNO = prompt("Please enter y/n for " + x + ".").toLowerCase();
   if (yesNO == "y") {
     yesNO = true;
   } else if (yesNO == "n") {
@@ -28,7 +28,7 @@ function boolOptions (x){
   }
 
   while (typeof yesNO !== "boolean" || yesNO == null) {
-    yesNO = prompt("Please enter y/n for " + x + ".").toLocaleLowerCase();
+    yesNO = prompt("Please enter y/n for " + x + ".").toLowerCase();
     if (yesNO === "y") {
       yesNO = true;
     } else if (yesNO === "n") {
@@ -55,11 +55,14 @@ function passwordOptions(){
 
   specChar = boolOptions("special characters");
 
-  return numCharOption , lowerCase , upperCase, numeric, specChar;
+  return numCharOption, lowerCase, upperCase, numeric, specChar;
 }
 
 function generatePassword(number, lower, upper, numeric, specChar) {
-  
+  var lowerChars = "abcdefghijklmnopqrstuvwxyz";
+  var upperChars = lowerChars.toUpperCase();
+  var numericChars = "0123456789";
+  var specChars = "";
 }
 
 // Write password to the #password input
