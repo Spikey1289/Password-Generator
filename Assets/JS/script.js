@@ -70,8 +70,6 @@ function passwordOptionsPrompt(){
   passwordOptions.specialOp = specChar;
 }
 
-
-
 function generatePassword(number = passwordOptions.lengthOp, lower = passwordOptions.lowerOp, upper = passwordOptions.upperOp, numeric = passwordOptions.numericOp, specChar = passwordOptions.specialOp) {
   var lowerChars = "abcdefghijklmnopqrstuvwzyz";
   var upperChars = lowerChars.toUpperCase();
