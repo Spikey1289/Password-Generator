@@ -1,8 +1,9 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-function numChar(x){
-  x = prompt("please enter number of charachters in password (8-128)", "0");
+function numChar(){
+
+  var x = prompt("please enter number of charachters in password (8-128)", "0");
   x = parseInt(x);
 
   while (typeof x !== "number" || isNaN(x) || 8 > x || x > 128 || x == null) {
@@ -17,8 +18,9 @@ function numChar(x){
   return x;
 }
 
-function boolOptions (yesNO){
-  yesNO = prompt("Please enter y/n for lower case.").toLocaleLowerCase();
+function boolOptions (x){
+
+  var yesNO = prompt("Please enter y/n for " + x + ".").toLocaleLowerCase();
   if (yesNO == "y") {
     yesNO = true;
   } else if (yesNO == "n") {
@@ -26,7 +28,7 @@ function boolOptions (yesNO){
   }
 
   while (typeof yesNO !== "boolean" || yesNO == null) {
-    yesNO = prompt("Please enter y/n for lower case.").toLocaleLowerCase();
+    yesNO = prompt("Please enter y/n for " + x + ".").toLocaleLowerCase();
     if (yesNO === "y") {
       yesNO = true;
     } else if (yesNO === "n") {
@@ -37,24 +39,26 @@ function boolOptions (yesNO){
 }
 
 function passwordOptions(){
-  var numChar;
+  var numCharOption;
   var lowerCase;
   var upperCase;
   var numeric;
   var specChar;
 
-  numChar = numChar();
+  numCharOption = numChar();
 
-  lowerCase = boolOptions();
+  lowerCase = boolOptions("lower case");
 
-  upperCase = boolOptions();
+  upperCase = boolOptions("upper case");
 
-  numeric = boolOptions();
+  numeric = boolOptions("numerics");
 
-  specChar = boolOptions();
+  specChar = boolOptions("special characters");
+
+  return numCharOption , lowerCase , upperCase, numeric, specChar;
 }
 
-function generatePassword() {
+function generatePassword(number, lower, upper, numeric, specChar) {
   
 }
 
