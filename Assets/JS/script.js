@@ -58,11 +58,18 @@ function passwordOptions(){
   return numCharOption, lowerCase, upperCase, numeric, specChar;
 }
 
-function generatePassword(number, lower, upper, numeric, specChar) {
-  var lowerChars = "abcdefghijklmnopqrstuvwxyz";
+
+// number, lower, upper, numeric, specChar
+function generatePassword() {
+  var lowerChars = "abcdefghijklmnopqrstuvwzyz";
   var upperChars = lowerChars.toUpperCase();
-  var numericChars = "0123456789";
-  var specChars = "";
+  var numericChars = "01234567890";
+  var specChars = "~`!@#$%^&*()_-+={[}]|:;'<,>.?/\"\\";
+
+  console.log(lowerChars);
+  console.log(upperChars);
+  console.log(numericChars);
+  console.log(specChars);
 }
 
 // Write password to the #password input
