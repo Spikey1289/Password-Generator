@@ -1,6 +1,8 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+const passwordOptions = {lengthOp: 0, lowerOp: "", upperOp: "", numericOp: "", specialOp: ""};
+
 function numChar(){
 
   var x = prompt("please enter number of charachters in password (8-128)", "0");
@@ -38,7 +40,7 @@ function boolOptions (x){
   return yesNO
 }
 
-function passwordOptions(){
+function passwordOptionsPrompt(){
   var numCharOption;
   var lowerCase;
   var upperCase;
@@ -47,34 +49,63 @@ function passwordOptions(){
 
   numCharOption = numChar();
 
-  lowerCase = boolOptions("lower case");
+  do {
+    lowerCase = boolOptions("lower case");
 
-  upperCase = boolOptions("upper case");
+    upperCase = boolOptions("upper case");
 
-  numeric = boolOptions("numerics");
+    numeric = boolOptions("numerics");
 
-  specChar = boolOptions("special characters");
+    specChar = boolOptions("special characters");
 
-  return numCharOption, lowerCase, upperCase, numeric, specChar;
+    if (!lowerCase && !upperCase && !numeric && !specChar){
+      alert("you must have AT LEAST one set of characters selected");
+    }
+  } while (!lowerCase && !upperCase && !numeric && !specChar)
+
+  passwordOptions.lengthOp = numCharOption;
+  passwordOptions.lowerOp = lowerCase;
+  passwordOptions.upperOp = upperCase;
+  passwordOptions.numericOp = numeric;
+  passwordOptions.specialOp = specChar;
 }
 
 
-// number, lower, upper, numeric, specChar
-function generatePassword() {
+
+function generatePassword(number = passwordOptions.lengthOp, lower = passwordOptions.lowerOp, upper = passwordOptions.upperOp, numeric = passwordOptions.numericOp, specChar = passwordOptions.specialOp) {
   var lowerChars = "abcdefghijklmnopqrstuvwzyz";
   var upperChars = lowerChars.toUpperCase();
   var numericChars = "01234567890";
   var specChars = "~`!@#$%^&*()_-+={[}]|:;'<,>.?/\"\\";
 
-  console.log(lowerChars);
-  console.log(upperChars);
-  console.log(numericChars);
-  console.log(specChars);
+  var passLength = number;
+  var passChars = "";
+  var password = "";
+
+  if (lower == true) {
+    passChars += lowerChars;
+  }
+  if (upper == true) {
+    passChars += upperChars;
+  }
+  if (numeric == true) {
+    passChars += numericChars;
+  }
+  if (specChar == true) {
+    passChars += specChars
+  }
+  
+  for (var i = 0; i <= passLength; i++){
+    var randNum = Math.floor(Math.random() * passChars.length);
+    password += passChars.substring(randNum, randNum + 1);
+  }
+  
+  return password;
 }
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword(passwordOptions());
+  var password = generatePassword(passwordOptionsPrompt());
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
